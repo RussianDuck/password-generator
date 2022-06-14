@@ -24,31 +24,8 @@
             aria-label="Generated Password"
           ></textarea>
         </div>
-
-        <section class="inputSection">
-          <div class="range">
-            <input type="range" min="8" max="128" step="1" value="8" id="password-length"
-            oninput="document.getElementById('display-password-length').value=this.value">
-            <input type="text" value="8" max="3" id="display-password-length"
-            oninput="document.getElementById('password-length').value=this.value">
-          </div>
-          <div class="flex">
-            <input type="checkbox" id="lowercase">
-            <label for="lowercase">Lowercase</label>
-          
-            <input type="checkbox" id="uppercase">
-            <label for="uppercase">Uppercase</label>
-          
-            <input type="checkbox" id="numbers">
-            <label for="numbers">Numbers</label>
-          
-            <input type="checkbox" id="symbols">
-            <label for="symbols">Symbols</label>
-          </div>
-
-        </section>
         <div class="card-footer">
-          <button id="create" class="btn">Create Password</button>
+          <button id="create" class="btn">Generate Password</button>
         </div>
       </div>
     </div>

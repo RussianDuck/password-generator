@@ -1,75 +1,56 @@
 var generateBtn = document.querySelector("#create");
 const password = document.querySelector("#password");
-const dataLowercase = "abcdefghijklmnopqrstuvwxyz".split("");
-const dataUppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
-const dataNumbers = "0123456789".split("");
-const dataSymbols = "!@#$%?&*".split("");
+const dataLowercase = "abcdefghijklmnopqrstuvwxyz";
+const dataUppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const dataNumbers = "0123456789";
+const dataSymbols = "!@#$%?&*";
+let finalPasswordChoices = "";
 
 function generatePassword() {
-  const data = [].concat (
-    lowercase.checked ? dataLowercase : [],
-    uppercase.checked ? dataUppercase : [],
-    numbers.checked ? dataNumbers : [],
-    symbols.checked ? dataSymbols: [],
-  )
-// Need to fix the value part of this statement
-  let passwordLength = parseInt(document.querySelector("display-password-length").value);
-  let newPassword = "";
-
-  if (data.length === 0) {
-    alert("Please select at least one criteria");
+  let passwordLength = parseInt(prompt("What length do you want your password to be?"))
+  if (!(passwordLength >= 8 && passwordLength <= 128)) {
+    alert("Invalid length. Please input a number between 8 and 128.")
     return;
   }
 
+  let lowercaseConfirm = confirm("Do you want lowercase characters in your password?")
+  if (lowercaseConfirm) {
+    finalPasswordChoices += dataLowercase;
+  } else
+    finalPasswordChoices != dataLowercase;
+
+  let uppercaseConfirm = confirm("Do you want uppercase characters in your password?")
+  if (uppercaseConfirm) {
+    finalPasswordChoices += dataUppercase;
+  } else
+  finalPasswordChoices != dataUppercase;
+
+  let numbersConfirm = confirm("Do you want numeral characters in your password?")
+  if (numbersConfirm) {
+    finalPasswordChoices += dataNumbers;
+  } else
+  finalPasswordChoices != dataNumbers;
+
+  let symbolsConfirm = confirm("Do you want symbols in your password?")
+  if (symbolsConfirm) {
+    finalPasswordChoices += dataSymbols;
+  } else
+  finalPasswordChoices != dataSymbols;
+
+  if (finalPasswordChoices != dataLowercase && finalPasswordChoices != dataUppercase && finalPasswordChoices != dataNumbers && finalPasswordChoices != dataSymbols) {
+    alert("Please choose at least 1 criteria")
+    return;
+  }
+
+let finalPasswordArray = finalPasswordChoices.split("");
+
+  let newPassword = "";
+
   for (let i = 0; i < passwordLength; i++) {
-    newPassword += data[Math.floor(Math.random() * data.length)];
+    newPassword += finalPasswordArray[Math.floor(Math.random() * finalPasswordArray.length)];
   }
 
   password.value = newPassword;
 }
 
 generateBtn.addEventListener("click", generatePassword);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Assignment code here
-
-
-// Get references to the #generate element
-// var generateBtn = document.querySelector("#create");
-
-// Write password to the #password input
-// function writePassword() {
-// var password = generatePassword();
-// var passwordText = document.querySelector("#password");
-
-// var divHeader = document.querySelector(".card-header");
-
-// let lengthInputQuestion = window.prompt("What is the length of your password?")
-// let arrayOfChoices = [];
-
-// for (let index = 0; index < 5; ++index) {
-//   let userPrompt = window.prompt()
-// }
-//   passwordText.value = password;
-
-// }
-
-// Add event listener to generate button
-// generateBtn.addEventListener("click", writePassword);
-// generateBtn.addEventListener("click", function() {
-//   document.querySelector("create").removeAttribute("hidden")
-// })
