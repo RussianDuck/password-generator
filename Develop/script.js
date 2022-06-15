@@ -14,31 +14,36 @@ function generatePassword() {
   }
 
   let lowercaseConfirm = confirm("Do you want lowercase characters in your password?")
+  console.log(lowercaseConfirm)
   if (lowercaseConfirm) {
     finalPasswordChoices += dataLowercase;
-  } else
-    finalPasswordChoices != dataLowercase;
+    console.log("This is true")
+  } 
 
   let uppercaseConfirm = confirm("Do you want uppercase characters in your password?")
+  console.log(uppercaseConfirm)
   if (uppercaseConfirm) {
     finalPasswordChoices += dataUppercase;
-  } else
-  finalPasswordChoices != dataUppercase;
+    console.log("This is true")
+  } 
 
   let numbersConfirm = confirm("Do you want numeral characters in your password?")
+  console.log(numbersConfirm)
   if (numbersConfirm) {
     finalPasswordChoices += dataNumbers;
-  } else
-  finalPasswordChoices != dataNumbers;
+    console.log("This is true")
+  } 
 
   let symbolsConfirm = confirm("Do you want symbols in your password?")
+  console.log(symbolsConfirm)
   if (symbolsConfirm) {
     finalPasswordChoices += dataSymbols;
-  } else
-  finalPasswordChoices != dataSymbols;
+    console.log("This is true")
+  } 
 
-  if (finalPasswordChoices != dataLowercase && finalPasswordChoices != dataUppercase && finalPasswordChoices != dataNumbers && finalPasswordChoices != dataSymbols) {
+  if (!uppercaseConfirm && !lowercaseConfirm && !numbersConfirm && !symbolsConfirm) {
     alert("Please choose at least 1 criteria")
+    console.log(finalPasswordChoices)
     return;
   }
 
@@ -51,6 +56,7 @@ let finalPasswordArray = finalPasswordChoices.split("");
   }
 
   password.value = newPassword;
+  finalPasswordChoices = "";
 }
 
 generateBtn.addEventListener("click", generatePassword);
